@@ -33,14 +33,14 @@ public class HumanController {
         //ui.printHumanList(humanList);
     }
     public void searchBySurname() {
-        HumanList humanList1 = new HumanList();
-        humanList1 = humanService.getListSurname(humanList, ui.readSurnameForSearch());
-        ui.printHumanList(humanList1);
+        HumanList humanListRepeatSurname = new HumanList();
+        humanListRepeatSurname = humanService.getListSurname(humanList, ui.readSurnameForSearch());
+        ui.printHumanList(humanListRepeatSurname);
 
     }
     public void searchByName() {
-        HumanList humanList1 = new HumanList();
-        humanList1 = humanService.getListName(humanList, ui.readNameForSearch());
-        ui.printHumanList(humanList1);
+        HumanList humanListRepeatName = new HumanList();
+        humanListRepeatName = humanService.getListName(humanList, ui.readNameForSearch());
+        ui.printHumanList(humanListRepeatName);
     }
 }
