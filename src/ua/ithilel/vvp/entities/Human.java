@@ -10,7 +10,7 @@ public class Human {
     @Override
     public String toString() {
         return
-                surname + " " + name +" "+patronymic;
+                surname + " " + name + " " + patronymic;
     }
 
     @Override

@@ -18,7 +18,7 @@ public class HumanController {
 
     public void addHuman() {
         Human human = ui.readHuman();
-        if (humanService.repeatHuman(human)) ui.error();
+        if (humanService.isRepeatHuman(human)) ui.error();
         humanService.addHuman(human);
 
     }

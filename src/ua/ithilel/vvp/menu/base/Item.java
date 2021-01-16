@@ -11,7 +11,7 @@ public abstract class Item {
 
     public Item(String name) {
         this.name = name;
-        this.exit=false;
+        this.exit = false;
     }
 
     String getName() {

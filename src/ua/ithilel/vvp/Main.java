@@ -21,7 +21,7 @@ public class Main {
         HumanService humanService = new HumanServiceVar1();
         HumanController humanController = new HumanController(humanUI, humanService);
 
-        Item[] items={
+        Item[] items = {
                 new AddHumanItem(humanController),
                 new PrintListItem(humanController),
                 new DeleteHumanItem(humanController),
@@ -30,7 +30,7 @@ public class Main {
                 new ExitItem()
         };
 
-        Menu menu = new MenuConsole(items,sc);
+        Menu menu = new MenuConsole(items, sc);
         menu.run();
 
     }

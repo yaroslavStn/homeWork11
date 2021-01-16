@@ -8,7 +8,7 @@ public class PrintListItem extends Item {
 
     public PrintListItem(HumanController humanController) {
         super("Print list");
-        this.humanController=humanController;
+        this.humanController = humanController;
     }
 
     @Override

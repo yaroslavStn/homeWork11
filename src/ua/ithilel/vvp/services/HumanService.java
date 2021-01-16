@@ -6,10 +6,12 @@ import ua.ithilel.vvp.entities.Human;
 import java.util.Set;
 
 public interface HumanService {
-    boolean repeatHuman (Human human);
+    boolean isRepeatHuman(Human human);
 
-    Set<Human> getListSurname(String surname) ;
-    Set<Human> getListName(String name) ;
+    Set<Human> getListSurname(String surname);
+
+    Set<Human> getListName(String name);
+
     void addHuman(Human human);
 
     void deleteHuman(int readIndexForRemove);

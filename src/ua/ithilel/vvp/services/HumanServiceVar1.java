@@ -2,16 +2,14 @@ package ua.ithilel.vvp.services;
 
 import ua.ithilel.vvp.entities.Human;
 
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class HumanServiceVar1 implements HumanService {
 
+    private Set<Human> humanList = new LinkedHashSet<>();
 
-   private Set<Human> humanList= new LinkedHashSet<>();
-
-    public boolean repeatHuman (Human human) {
+    public boolean isRepeatHuman(Human human) {
         for (Human elem : humanList) {
             if (elem.equals(human)) return true;
         }
@@ -29,6 +27,7 @@ public class HumanServiceVar1 implements HumanService {
         }
         return result;
     }
+
     public Set<Human> getListName(String name) {
         Set<Human> result = new LinkedHashSet<>();
         for (Human human : humanList) {
@@ -46,13 +45,12 @@ public class HumanServiceVar1 implements HumanService {
     }
 
     public void deleteHuman(int readIndexForRemove) {
-        int i=1;
+        int i = 1;
         for (Human human : humanList) {
-            if (readIndexForRemove==i) {
+            if (readIndexForRemove == i) {
                 humanList.remove(human);
                 break;
-            }
-            else i++;
+            } else i++;
         }
     }
 
