@@ -1,14 +1,13 @@
 package ua.ithilel.vvp.UI;
 
 import ua.ithilel.vvp.entities.Human;
-import ua.ithilel.vvp.util.HumanList;
 
-import java.util.Scanner;
+import java.util.List;
 
 public interface HumanUI {
     Human readHuman() ;
     void error ();
-    void printHumanList(HumanList humanList);
+    void printHumanList (List<Human> humanList);
     int readIndexForRemove ();
     String readNameForSearch ();
     String readSurnameForSearch ();

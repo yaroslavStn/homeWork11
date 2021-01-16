@@ -3,7 +3,8 @@ package ua.ithilel.vvp.contoller;
 import ua.ithilel.vvp.UI.HumanUI;
 import ua.ithilel.vvp.services.HumanService;
 import ua.ithilel.vvp.entities.Human;
-import ua.ithilel.vvp.util.HumanList;
+
+import java.util.List;
 
 
 public class HumanController {
@@ -32,16 +33,14 @@ public class HumanController {
     }
 
     public void searchBySurname() {
-        new HumanList();
-        HumanList humanListRepeatSurname;
+        List<Human> humanListRepeatSurname;
         humanListRepeatSurname = humanService.getListSurname(ui.readSurnameForSearch());
         ui.printHumanList(humanListRepeatSurname);
 
     }
 
     public void searchByName() {
-        new HumanList();
-        HumanList humanListRepeatName;
+        List<Human> humanListRepeatName;
         humanListRepeatName = humanService.getListName(ui.readNameForSearch());
         ui.printHumanList(humanListRepeatName);
     }

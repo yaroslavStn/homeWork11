@@ -1,20 +1,20 @@
 package ua.ithilel.vvp.services;
 
 import ua.ithilel.vvp.entities.Human;
-import ua.ithilel.vvp.util.HumanList;
+
+
+import java.util.List;
 
 public interface HumanService {
+    boolean repeatHuman (Human human);
 
-
+    List<Human> getListSurname(String surname) ;
+    List<Human> getListName(String name) ;
     void addHuman(Human human);
 
     void deleteHuman(int readIndexForRemove);
 
-    HumanList getHumanList();
+    List<Human> getHumanList();
 
-    boolean repeatHuman(Human human);
 
-    HumanList getListSurname(String readSurnameForSearch);
-
-    HumanList getListName(String readNameForSearch);
 }

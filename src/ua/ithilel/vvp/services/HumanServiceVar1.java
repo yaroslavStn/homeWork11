@@ -1,56 +1,54 @@
 package ua.ithilel.vvp.services;
 
-import ua.ithilel.vvp.contoller.HumanController;
 import ua.ithilel.vvp.entities.Human;
-import ua.ithilel.vvp.util.HumanList;
+
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HumanServiceVar1 implements HumanService {
 
-   private HumanList humanList=new HumanList();
+   private List <Human> humanList= new ArrayList<>();
 
-    public boolean repeatHuman (Human human){
-        for (int i = 0; i < humanList.size(); i++) {
-            if (isHumanRepeats(human, i)) return true;
+    public boolean repeatHuman (Human human) {
+        for (Human elem : humanList) {
+            if (elem.equals(human)) return true;
         }
         return false;
     }
 
-    private boolean isHumanRepeats(Human human, int i) {
-        return humanList.getHuman(i).equals(human);
-    }
-
-    public HumanList getListSurname(String surname) {
-        HumanList result = new HumanList();
-        for (int i = 0; i < humanList.size(); i++) {
-            if (surname.hashCode() == humanList.getHuman(i).getSurname().hashCode()) {
-                if (surname.equalsIgnoreCase(humanList.getHuman(i).getSurname())) {
-                    result.addHuman(humanList.getHuman(i));
+    public List<Human> getListSurname(String surname) {
+        List <Human> result = new ArrayList<>();
+        for (Human human : humanList) {
+            if (surname.hashCode() == human.getSurname().hashCode()) {
+                if (surname.equalsIgnoreCase(human.getSurname())) {
+                    result.add(human);
                 }
             }
         }
         return result;
     }
-    public HumanList getListName(String name) {
-        HumanList result = new HumanList();
-        for (int i = 0; i < humanList.size(); i++) {
-           // if (name.hashCode() == humanList.getHuman(i).getName().hashCode()) {
-                if (name.equalsIgnoreCase(humanList.getHuman(i).getName())) {
-                    result.addHuman(humanList.getHuman(i));
-                }
-          //  }
+    public List<Human> getListName(String name) {
+        List <Human> result = new ArrayList<>();
+        for (Human human : humanList) {
+            // if (name.hashCode() == humanList.getHuman(i).getName().hashCode()) {
+            if (name.equalsIgnoreCase(human.getName())) {
+                result.add(human);
+            }
+            //  }
         }
         return result;
     }
 
     public void addHuman(Human human) {
-        humanList.addHuman(human);
+        humanList.add(human);
     }
 
     public void deleteHuman(int readIndexForRemove) {
-        humanList.deleteHuman(readIndexForRemove);
+        humanList.remove(readIndexForRemove);
     }
 
-    public HumanList getHumanList() {
+    public List<Human> getHumanList() {
         return humanList;
     }
 }

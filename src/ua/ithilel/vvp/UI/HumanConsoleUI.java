@@ -1,8 +1,8 @@
 package ua.ithilel.vvp.UI;
 
 import ua.ithilel.vvp.entities.Human;
-import ua.ithilel.vvp.util.HumanList;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class HumanConsoleUI implements HumanUI {
@@ -25,13 +25,13 @@ public class HumanConsoleUI implements HumanUI {
     }
 
     @Override
-    public void printHumanList(HumanList humanList) {
+    public void printHumanList(List <Human> humanList) {
         System.out.println("\n" +
                 "-----Humans-----\n" +
                 "");
         for (int i = 0; i < humanList.size(); i++) {
             System.out.print(i+1+") ");
-            System.out.println(humanList.getHuman(i));
+            System.out.println(humanList.get(i));
         }
         System.out.println("-----=====----");
     }
@@ -40,7 +40,7 @@ public class HumanConsoleUI implements HumanUI {
         System.out.println("Enter index ");
         int index =sc.nextInt();
         sc.nextLine();
-        return index;
+        return index-11;
     }
     @Override
     public String readNameForSearch (){
