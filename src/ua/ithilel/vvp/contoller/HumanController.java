@@ -1,46 +1,48 @@
 package ua.ithilel.vvp.contoller;
 
-import ua.ithilel.vvp.services.HumanService;
 import ua.ithilel.vvp.UI.HumanUI;
+import ua.ithilel.vvp.services.HumanService;
 import ua.ithilel.vvp.entities.Human;
 import ua.ithilel.vvp.util.HumanList;
 
 
 public class HumanController {
-    HumanUI ui;
-    HumanList humanList;
-    HumanService humanService;
+    private HumanUI ui;
+    private HumanService humanService;
 
-    public HumanController(HumanUI ui, HumanList humanList, HumanService humanService) {
+    public HumanController(HumanUI ui, HumanService humanService) {
         this.ui = ui;
-        this.humanList = humanList;
         this.humanService = humanService;
     }
 
     public void addHuman() {
         Human human = ui.readHuman();
-        if (humanService.repeatHuman(humanList,human)) ui.error();
-        else humanList.addHuman(human);
-        //ui.printHumanList(humanList);
+        if (humanService.repeatHuman(human)) ui.error();
+        else humanService.addHuman(human);
+
     }
 
     public void printList() {
-        ui.printHumanList(humanList);
+        ui.printHumanList(humanService.getHumanList());
     }
 
     public void deleteHuman() {
-        humanList.deliteHuman(ui.readIndexForRemove());
+        humanService.deleteHuman(ui.readIndexForRemove());
         //ui.printHumanList(humanList);
     }
+
     public void searchBySurname() {
-        HumanList humanListRepeatSurname = new HumanList();
-        humanListRepeatSurname = humanService.getListSurname(humanList, ui.readSurnameForSearch());
+        new HumanList();
+        HumanList humanListRepeatSurname;
+        humanListRepeatSurname = humanService.getListSurname(ui.readSurnameForSearch());
         ui.printHumanList(humanListRepeatSurname);
 
     }
+
     public void searchByName() {
-        HumanList humanListRepeatName = new HumanList();
-        humanListRepeatName = humanService.getListName(humanList, ui.readNameForSearch());
+        new HumanList();
+        HumanList humanListRepeatName;
+        humanListRepeatName = humanService.getListName(ui.readNameForSearch());
         ui.printHumanList(humanListRepeatName);
     }
 }

@@ -13,7 +13,7 @@ public class HumanList {
          humans= Arrays.copyOf(humans,humans.length+1);
          humans[humans.length-1]=human;
     }
-    public void deliteHuman (int index){
+    public void deleteHuman(int index){
 
         for (int i = 0; i < humans.length-1; i++) {
             if (i>=index-1) humans[i]= humans[i+1];
@@ -29,5 +29,9 @@ public class HumanList {
     }
     public int size (){
         return humans.length;
+    }
+
+    public Human[] getHumans() {
+        return humans;
     }
 }
