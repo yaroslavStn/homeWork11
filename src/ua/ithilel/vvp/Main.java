@@ -10,6 +10,7 @@ import ua.ithilel.vvp.menu.base.MenuConsole;
 import ua.ithilel.vvp.services.HumanService;
 import ua.ithilel.vvp.services.HumanServiceVar1;
 
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class Main {

@@ -2,13 +2,14 @@ package ua.ithilel.vvp.services;
 
 import ua.ithilel.vvp.entities.Human;
 
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class HumanServiceVar1 implements HumanService {
 
-   private List <Human> humanList= new ArrayList<>();
+
+   private Set<Human> humanList= new LinkedHashSet<>();
 
     public boolean repeatHuman (Human human) {
         for (Human elem : humanList) {
@@ -17,8 +18,8 @@ public class HumanServiceVar1 implements HumanService {
         return false;
     }
 
-    public List<Human> getListSurname(String surname) {
-        List <Human> result = new ArrayList<>();
+    public Set<Human> getListSurname(String surname) {
+        Set<Human> result = new LinkedHashSet<>();
         for (Human human : humanList) {
             if (surname.hashCode() == human.getSurname().hashCode()) {
                 if (surname.equalsIgnoreCase(human.getSurname())) {
@@ -28,8 +29,8 @@ public class HumanServiceVar1 implements HumanService {
         }
         return result;
     }
-    public List<Human> getListName(String name) {
-        List <Human> result = new ArrayList<>();
+    public Set<Human> getListName(String name) {
+        Set<Human> result = new LinkedHashSet<>();
         for (Human human : humanList) {
             // if (name.hashCode() == humanList.getHuman(i).getName().hashCode()) {
             if (name.equalsIgnoreCase(human.getName())) {
@@ -45,10 +46,17 @@ public class HumanServiceVar1 implements HumanService {
     }
 
     public void deleteHuman(int readIndexForRemove) {
-        humanList.remove(readIndexForRemove);
+        int i=1;
+        for (Human human : humanList) {
+            if (readIndexForRemove==i) {
+                humanList.remove(human);
+                break;
+            }
+            else i++;
+        }
     }
 
-    public List<Human> getHumanList() {
+    public Set<Human> getHumanList() {
         return humanList;
     }
 }

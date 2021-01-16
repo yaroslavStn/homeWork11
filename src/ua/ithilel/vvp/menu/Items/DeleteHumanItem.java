@@ -13,7 +13,7 @@ private HumanController humanController;
 
         @Override
         public void exec() {
-            humanController.deleteHuman();
+            humanController.isRepeatHuman();
         }
     }
 

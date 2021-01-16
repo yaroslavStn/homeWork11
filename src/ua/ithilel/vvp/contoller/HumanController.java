@@ -4,7 +4,7 @@ import ua.ithilel.vvp.UI.HumanUI;
 import ua.ithilel.vvp.services.HumanService;
 import ua.ithilel.vvp.entities.Human;
 
-import java.util.List;
+import java.util.Set;
 
 
 public class HumanController {
@@ -19,7 +19,7 @@ public class HumanController {
     public void addHuman() {
         Human human = ui.readHuman();
         if (humanService.repeatHuman(human)) ui.error();
-        else humanService.addHuman(human);
+        humanService.addHuman(human);
 
     }
 
@@ -27,20 +27,20 @@ public class HumanController {
         ui.printHumanList(humanService.getHumanList());
     }
 
-    public void deleteHuman() {
+    public void isRepeatHuman() {
         humanService.deleteHuman(ui.readIndexForRemove());
         //ui.printHumanList(humanList);
     }
 
     public void searchBySurname() {
-        List<Human> humanListRepeatSurname;
+        Set<Human> humanListRepeatSurname;
         humanListRepeatSurname = humanService.getListSurname(ui.readSurnameForSearch());
         ui.printHumanList(humanListRepeatSurname);
 
     }
 
     public void searchByName() {
-        List<Human> humanListRepeatName;
+        Set<Human> humanListRepeatName;
         humanListRepeatName = humanService.getListName(ui.readNameForSearch());
         ui.printHumanList(humanListRepeatName);
     }
