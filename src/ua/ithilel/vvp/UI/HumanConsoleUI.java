@@ -1,6 +1,7 @@
 package ua.ithilel.vvp.UI;
 
 import ua.ithilel.vvp.entities.Human;
+import ua.ithilel.vvp.myException.HumanException;
 
 import java.util.Iterator;
 import java.util.Scanner;
@@ -20,13 +21,11 @@ public class HumanConsoleUI implements HumanUI {
         String surname = sc.next();
         String name = sc.next();
         String patronymic = sc.next();
+        sc.nextLine();
         return new Human(name, surname, patronymic);
     }
 
-    @Override
-    public void error() {
-        System.out.println("this person has been added");
-    }
+
 
     @Override
     public void printHumanList(Set<Human> humanList) {
@@ -44,10 +43,20 @@ public class HumanConsoleUI implements HumanUI {
     @Override
     public int readIndexForRemove() {
         System.out.println("Enter index ");
-        int index = sc.nextInt();
-        sc.nextLine();
+        int index = 0;
+        boolean correct = true;
+        while (correct) {
+            String s = sc.nextLine();
+            try {
+                index = Integer.parseInt(s);
+                correct=false;
+            } catch (Exception e) {
+                System.out.println("Incorrect, enter num!");
+            }
+        }
         return index;
     }
+
 
     @Override
     public String readNameForSearch() {
@@ -59,5 +68,10 @@ public class HumanConsoleUI implements HumanUI {
     public String readSurnameForSearch() {
         System.out.println("Enter Surname ");
         return sc.nextLine();
+    }
+
+    @Override
+    public void showError(String message) {
+        System.err.println (message);
     }
 }

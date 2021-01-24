@@ -1,5 +1,6 @@
 package ua.ithilel.vvp;
 
+
 import ua.ithilel.vvp.UI.HumanConsoleUI;
 import ua.ithilel.vvp.UI.HumanUI;
 import ua.ithilel.vvp.contoller.HumanController;
@@ -10,7 +11,6 @@ import ua.ithilel.vvp.menu.base.MenuConsole;
 import ua.ithilel.vvp.services.HumanService;
 import ua.ithilel.vvp.services.HumanServiceVar1;
 
-import java.util.HashSet;
 import java.util.Scanner;
 
 public class Main {

@@ -1,6 +1,8 @@
 package ua.ithilel.vvp.contoller;
 
+
 import ua.ithilel.vvp.UI.HumanUI;
+import ua.ithilel.vvp.myException.HumanException;
 import ua.ithilel.vvp.services.HumanService;
 import ua.ithilel.vvp.entities.Human;
 
@@ -18,9 +20,12 @@ public class HumanController {
 
     public void addHuman() {
         Human human = ui.readHuman();
-        if (humanService.isRepeatHuman(human)) ui.error();
+        try {
+            if(humanService.contains(human)) throw new HumanException();
+        }catch (HumanException e) {
+            ui.showError("Human already exist");
+        }
         humanService.addHuman(human);
-
     }
 
     public void printList() {
@@ -29,7 +34,7 @@ public class HumanController {
 
     public void isRepeatHuman() {
         humanService.deleteHuman(ui.readIndexForRemove());
-        //ui.printHumanList(humanList);
+
     }
 
     public void searchBySurname() {

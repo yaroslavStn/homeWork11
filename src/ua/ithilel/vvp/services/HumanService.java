@@ -1,12 +1,13 @@
 package ua.ithilel.vvp.services;
 
+
 import ua.ithilel.vvp.entities.Human;
 
 
 import java.util.Set;
 
 public interface HumanService {
-    boolean isRepeatHuman(Human human);
+
 
     Set<Human> getListSurname(String surname);
 
@@ -17,6 +18,8 @@ public interface HumanService {
     void deleteHuman(int readIndexForRemove);
 
     Set<Human> getHumanList();
+
+    boolean contains(Human human);
 
 
 }

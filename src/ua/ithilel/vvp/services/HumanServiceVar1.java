@@ -1,6 +1,7 @@
 package ua.ithilel.vvp.services;
 
 import ua.ithilel.vvp.entities.Human;
+import ua.ithilel.vvp.myException.HumanException;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -8,13 +9,6 @@ import java.util.Set;
 public class HumanServiceVar1 implements HumanService {
 
     private Set<Human> humanList = new LinkedHashSet<>();
-
-    public boolean isRepeatHuman(Human human) {
-        for (Human elem : humanList) {
-            if (elem.equals(human)) return true;
-        }
-        return false;
-    }
 
     public Set<Human> getListSurname(String surname) {
         Set<Human> result = new LinkedHashSet<>();
@@ -40,7 +34,8 @@ public class HumanServiceVar1 implements HumanService {
         return result;
     }
 
-    public void addHuman(Human human) {
+    public void addHuman(Human human)  {
+
         humanList.add(human);
     }
 
@@ -57,4 +52,10 @@ public class HumanServiceVar1 implements HumanService {
     public Set<Human> getHumanList() {
         return humanList;
     }
+
+    @Override
+    public boolean contains (Human human){
+        return humanList.contains(human);
+    }
+
 }

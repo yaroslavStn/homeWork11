@@ -1,7 +1,6 @@
 package ua.ithilel.vvp.menu.base;
 
-import ua.ithilel.vvp.contoller.HumanController;
-import ua.ithilel.vvp.menu.*;
+import ua.ithilel.vvp.myException.HumanException;
 
 import java.util.Scanner;
 
@@ -20,11 +19,20 @@ public class MenuConsole implements Menu {
         for (; ; ) {
             showMenu();
             System.out.println("Enter choice:");
-            int choice = getChoice();
-            sc.nextLine();
-            if (isChoiceValid(choice)) {
-                System.out.println("Enter another menu item");
-                continue;
+
+            int choice = 0;
+            boolean correct = true;
+            while (correct) {
+                String s = sc.nextLine();
+                try {
+                    choice = Integer.parseInt(s) - 1;
+                    isChoiceValid(choice);
+                    correct = false;
+                } catch (HumanException e) {
+                    System.out.println("Incorrect, try again!");
+                } catch (Exception e) {
+                    System.out.println("Incorrect, enter another");
+                }
             }
             items[choice].exec();
             if (items[choice].isExit()) {
@@ -34,13 +42,10 @@ public class MenuConsole implements Menu {
 
     }
 
-    private boolean isChoiceValid(int choice) {
-        return choice < 0 || choice >= items.length;
+    private void isChoiceValid(int choice) throws HumanException {
+        if (choice < 0 || choice >= items.length) throw new HumanException();
     }
 
-    private int getChoice() {
-        return sc.nextInt() - 1;
-    }
 
     private void showMenu() {
         System.out.println("--------Menu--------");

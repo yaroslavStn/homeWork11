@@ -1,5 +1,6 @@
 package ua.ithilel.vvp.menu.base;
 
+
 public abstract class Item {
     private String name;
     private boolean exit;
@@ -23,5 +24,4 @@ public abstract class Item {
     }
 
     public abstract void exec();
-
 }
