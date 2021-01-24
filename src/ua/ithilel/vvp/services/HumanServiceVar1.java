@@ -3,14 +3,26 @@ package ua.ithilel.vvp.services;
 import ua.ithilel.vvp.entities.Human;
 import ua.ithilel.vvp.myException.HumanException;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.*;
 
 public class HumanServiceVar1 implements HumanService {
 
     private Set<Human> humanList = new LinkedHashSet<>();
 
-    public Set<Human> getListSurname(String surname) {
+    public HumanServiceVar1() {
+    }
+
+    @Override
+    public void searchExistenceIndex(int index) throws HumanException {
+        if (index<1 || index>humanList.size()) throw new HumanException();
+    }
+
+    @Override
+    public void searchExistence(Set name) throws HumanException {
+        if (name.size()==0) throw new HumanException();
+    }
+
+    public Set<Human> getListSurname (String surname){
         Set<Human> result = new LinkedHashSet<>();
         for (Human human : humanList) {
             if (surname.hashCode() == human.getSurname().hashCode()) {

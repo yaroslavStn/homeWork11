@@ -14,7 +14,7 @@ public class DeleteHumanItem extends Item {
 
     @Override
     public void exec() {
-        humanController.isRepeatHuman();
+        humanController.deleteHuman();
     }
 }
 

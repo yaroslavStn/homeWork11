@@ -32,21 +32,46 @@ public class HumanController {
         ui.printHumanList(humanService.getHumanList());
     }
 
-    public void isRepeatHuman() {
-        humanService.deleteHuman(ui.readIndexForRemove());
-
+    public void deleteHuman() {
+        int index = ui.readIndexForRemove();
+        try {
+            humanService.searchExistenceIndex(index);
+            humanService.deleteHuman(index);
+        }catch (HumanException e) {
+            ui.showError("Index is not found");
+        }
     }
 
     public void searchBySurname() {
-        Set<Human> humanListRepeatSurname;
-        humanListRepeatSurname = humanService.getListSurname(ui.readSurnameForSearch());
-        ui.printHumanList(humanListRepeatSurname);
 
+        String surname = ui.readSurnameForSearch();
+        try {
+            Set<Human> humansWithRepeat = createSetOfRepeat(surname, true);
+            humanService.searchExistence(humansWithRepeat);
+            ui.printHumanList(humansWithRepeat);
+        }catch (HumanException e){
+            ui.showError("value not found");
+        }
     }
 
+
     public void searchByName() {
-        Set<Human> humanListRepeatName;
-        humanListRepeatName = humanService.getListName(ui.readNameForSearch());
-        ui.printHumanList(humanListRepeatName);
+        String name = ui.readNameForSearch();
+        try {
+            Set<Human> humansWithRepeat = createSetOfRepeat(name, false);
+            humanService.searchExistence(humansWithRepeat);
+            ui.printHumanList(humansWithRepeat);
+
+        }catch (HumanException e){
+            ui.showError("value not found");
+        }
+    }
+
+    private Set<Human> createSetOfRepeat(String attribute, boolean surname) {
+
+        Set<Human> humanListRepeatAttribute;
+        if (surname) humanListRepeatAttribute = humanService.getListSurname(attribute);
+        else humanListRepeatAttribute = humanService.getListName(attribute);
+        return humanListRepeatAttribute;
     }
 }
